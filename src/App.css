@@ -11,3 +11,7 @@
 .quantity {
   padding: 10px;
 }
+
+.fa-times {
+  cursor: pointer;
+}

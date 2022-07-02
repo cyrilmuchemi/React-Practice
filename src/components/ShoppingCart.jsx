@@ -28,6 +28,7 @@ export class ShoppingCart extends Component {
           product = {prod}
           onIncrement= {this.handleIncrement}
           onDecrement= {this.handleDectement}
+          onDelete= {this.handleDelete}
           >
             <button className='btn btn-primary'>Buy Now</button>
           </Product>
@@ -52,9 +53,16 @@ export class ShoppingCart extends Component {
     if(allProducts[index].quantity > minValue) {
       allProducts[index].quantity --;
     this.setState({products: allProducts}) 
-    }
-    
+    } 
   }
+
+  handleDelete = (product) => {
+    let allProducts = [...this.state.products];
+    let index = allProducts.indexOf(product)
+    allProducts.splice(index, 1);
+    this.setState({products: allProducts}) 
+    
+}
 }
 
 export default ShoppingCart
