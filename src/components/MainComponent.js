@@ -5,8 +5,6 @@ export class MainComponent extends Component {
     super(props)
   
     this.state = {
-       pageTile: 'customers',
-       customersCount: 5,
        customers: [
         {
           id:1, 
@@ -55,7 +53,7 @@ export class MainComponent extends Component {
       return <div className='bg-danger p-2'>No Phone</div>
     }
   }
-  
+
   render() {
     return (
       <div>
@@ -64,8 +62,8 @@ export class MainComponent extends Component {
         <table className='table'>
           <thead>
             <tr>
-              <th>Photo</th>
               <th>#</th>
+              <th>Photo</th>
               <th>Customer Name</th>
               <th>Phone</th>
               <th>City</th>
@@ -78,11 +76,15 @@ export class MainComponent extends Component {
   }
   getCustomerTable = () => {
    return (
-      this.state.customers.map((customer)=>{
+      this.state.customers.map((customer, index)=>{
         return(
         <tr key={customer.id}>
-          <tr><img src={customer.photo} alt= 'Customer' /></tr>
             <td>{customer.id}</td>
+            <td><img src={customer.photo} alt= 'Customer' />
+            <div>
+              <button className='btn btn-sm btn-secondary' onClick={() => {this.onChangePictureClick(customer, index)}}>Change Picture</button>
+            </div>
+            </td>
             <td>{customer.name}</td>
             <td>{this.getRenderToPhone(customer.phone)}</td>
             <td>{customer.address.city}</td>
@@ -91,8 +93,15 @@ export class MainComponent extends Component {
 
       })
    )
-
   }
+
+  onChangePictureClick = (customer, index) => {
+    var customerArray = this.state.customers;
+    customerArray[index].photo = 'https://picsum.photos/id/1018/60';
+    this.setState({customers: customerArray});
+  }
+
+
 }
 
 export default MainComponent
