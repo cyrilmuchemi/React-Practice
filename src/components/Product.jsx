@@ -23,8 +23,8 @@ export class Product extends Component {
           <div className='float-start'>
             <div className='btn-group'>
             <span className='quantity'>{this.state.product.quantity}</span>
-              <button className='btn btn-outline-success' onClick={()=>{this.props.onIncrement(this.state.product)}}>+</button>
-              <button className='btn btn-outline-success' onClick={()=>{this.props.onDecrement(this.state.product)}}>-</button>
+              <button className='btn btn-outline-success' onClick={()=>{this.props.onIncrement(this.state.product, 10)}}>+</button>
+              <button className='btn btn-outline-success' onClick={()=>{this.props.onDecrement(this.state.product, 0)}}>-</button>
             </div>
           </div>
           <div className='float-end'>{this.props.children}</div>

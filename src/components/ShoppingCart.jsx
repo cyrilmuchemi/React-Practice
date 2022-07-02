@@ -36,19 +36,24 @@ export class ShoppingCart extends Component {
       </div>
     )
   }
-  handleIncrement = (product) => {
+  handleIncrement = (product, maxValue) => {
     let allProducts = [...this.state.products];
     let index = allProducts.indexOf(product)
-    allProducts[index].quantity ++;
-    this.setState({products: allProducts})
-
+    if(allProducts[index].quantity < maxValue) {
+      allProducts[index].quantity ++;
+      this.setState({products: allProducts})
+    }  
   }
 
-  handleDectement = (product) => {
+  handleDectement = (product, minValue) => {
     //console.log('Item decresed', product)
     let allProducts = [...this.state.products];
     let index = allProducts.indexOf(product)
-    console.log(index);
+    if(allProducts[index].quantity > minValue) {
+      allProducts[index].quantity --;
+    this.setState({products: allProducts}) 
+    }
+    
   }
 }
 
