@@ -59,9 +59,11 @@ export class ShoppingCart extends Component {
   handleDelete = (product) => {
     let allProducts = [...this.state.products];
     let index = allProducts.indexOf(product)
-    allProducts.splice(index, 1);
-    this.setState({products: allProducts}) 
-    
+
+    if(window.confirm('Are you sure you want to delete?')) {
+      allProducts.splice(index, 1);
+      this.setState({products: allProducts}) 
+    }    
 }
 }
 

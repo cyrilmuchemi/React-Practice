@@ -1,12 +1,12 @@
 import './App.css';
 import { Navbar } from './components/Navbar';
-import { ShoppingCart } from './components/ShoppingCart';
+import { Login } from './components/Login';
 
 function App() {
   return (
     <div className="App">
      <Navbar/> 
-     <ShoppingCart/>
+     <Login/>
     </div>
   );
 }
